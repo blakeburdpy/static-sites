@@ -1,0 +1,285 @@
+/* Begin RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Box and Font Sizing */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 68.5%;
+  scroll-behavior: smooth; /* so, this behavior is not well explained in documentation: this affects the scroll behavior of links when clicked - the auto-scrolling, if you will. if not set to 'smooth', the screen immediately jumps to the content. if set, it smoothly transitions to the content by scrolling.*/
+}
+
+/* Media queries to resize fonts/grids across devices */
+
+@media (max-width: 1440px) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media (max-width: 980px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 460px) {
+  html {
+    font-size: 45%;
+  }
+}
+
+/* Style time! */
+
+body {
+  font-family: "Tomorrow", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: gainsboro;
+}
+
+h1,
+h2 {
+  font-family: "Alata", sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 4.2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: ivory;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 0.5em 0.5em;
+  justify-content: center;
+  align-content: center;
+}
+
+/* nav formatting */
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: tomato;
+  box-shadow: 0 2px 0 #111;
+  z-index: 10;
+  font-size: 1.5em;
+}
+
+.nav-list {
+  display: flex;
+  margin: 0 2rem;
+}
+/* Navbar media queries*/
+
+@media (max-width: 460px) {
+  nav {
+    top: 0;
+    justify-content: center;
+  }
+
+  .nav-list {
+    margin: 0 1rem;
+  }
+}
+
+.nav-list a {
+  padding: 0.4em;
+}
+
+/* section formatting */
+
+.welcome-section,
+.projects-section {
+  padding: 4rem;
+  background-color: #222;
+  height: auto;
+}
+
+/* welcome section */
+
+.welcome-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2.2rem;
+  flex-direction: column;
+  height: 100vh;
+  box-shadow: 0 2px 0 #f64;
+}
+
+.welcome-section > p {
+  margin: 1rem;
+  text-align: center;
+}
+
+/* projects-section */
+
+.projects-section {
+  display: block;
+  height: auto;
+}
+
+.projects-grid {
+  grid-template-columns: 18em 18em 18em;
+  grid-auto-rows: 17em;
+}
+
+.projects-grid a {
+  margin: 0;
+}
+
+.project-tile {
+  font-family: "Alata", sans-serif;
+  margin: 0;
+  text-align: center;
+  background-color: steelblue;
+  border-radius: 5%;
+  transition: background-color 0.2s ease-out;
+}
+
+.project-tile {
+  min-width: 0;
+  grid-template-columns: 16em minmax(0, 1em);
+  grid-template-rows: 16em;
+  justify-content: start;
+  align-content: start;
+}
+
+.rotate {
+  white-space: nowrap;
+  transform: rotate(90deg);
+}
+
+.project-img {
+  margin: 0;
+  padding: 0;
+  width: 16em;
+  height: 16em;
+  border-radius: 5% 0 0 5%;
+  grid-column: 1 / 2;
+}
+
+.tile-caption {
+  max-width: 100%;
+  text-align: center;
+  grid-column: 2 / 3;
+}
+
+/* Footer navbar */
+
+.footer-bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 25vh;
+  background: #111;
+  box-shadow: 0 2px 0 #FFF;
+  z-index: 10;
+  font-size: 1.5em;
+}
+
+.footer-nav {
+  grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+}
+
+.footer-link {
+  color: lightcyan;
+  text-shadow: 2px 2px 4px whitesmoke;
+}
+
+.link1 { grid-column: 2 / 3; }
+
+.link2 { grid-column: 3 / 4 }
+
+/* Media queries for grid */
+
+@media (max-width: 980px) {
+  .projects-grid {
+    grid-template-columns: 21em 21em;
+    grid-auto-rows: 20em;
+  }
+  .project-tile {
+    grid-template-columns: 19em minmax(0, 1em);
+    grid-template-rows: 19em;
+  }
+  .project-img {
+    width: 19em;
+    height: 19em;
+  }
+}
+
+@media (max-width: 700px) {
+  .projects-grid {
+    grid-template-columns: 23em;
+    grid-auto-rows: 22em;
+  }
+  .project-tile {
+    grid-template-columns: 21em minmax(0, 1em);
+    grid-template-rows: 21em;
+  }
+  .project-img {
+    width: 21em;
+    height: 21em;
+  }
+}
+
+/* project animation */
+
+.caption-fadein {
+  color: steelblue;
+  font-size: 1.2em;
+  transition: color 0.2s ease-out;
+}
+
+.project-tile:hover .caption-fadein {
+  color: crimson;
+}
+
+.project-tile:hover {
+  background-color: lightblue;
+  transform: translateX(-0.25em) translateY(-0.5em);
+}
+
+
+.footer-link:hover {   transform: translateX(-0.2em) translateY(-0.2em); }
